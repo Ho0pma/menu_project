@@ -1,5 +1,9 @@
 Цель проекта: реализовать древовидное меню с помощью шаблонного тега draw_menu. 
 
+Result:
+![image](https://github.com/user-attachments/assets/3cad75bf-8619-4ad1-b2ab-4ab2de6fdb18)
+
+
 Запуск:
 1 вар: 
   - в корне проекта прописать docker-compose up --build. Автоматически создастся два меню для демонстрации.
