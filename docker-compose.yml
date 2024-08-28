@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+ db:
+   image: postgres:latest
+   environment:
+     POSTGRES_DB: django_db
+     POSTGRES_USER: user
+     POSTGRES_PASSWORD: pass
+   volumes:
+     - django_db_volume:/var/lib/postgresql/data
+   ports:
+     - "5432:5432"
+   healthcheck:
+     test: [ "CMD-SHELL", "pg_isready -U user -d django_db" ]
+     interval: 1s
+     timeout: 2s
+     retries: 3
+
+ web:
+   build:
+     context: .
+     dockerfile: web/Dockerfile
+   environment:
+     DJANGO_SUPERUSER_PASSWORD: root
+   volumes:
+     - ./web:/code
+   ports:
+     - "8000:8000"
+   depends_on:
+     db:
+       condition: service_healthy
+
+volumes:
+ django_db_volume:
