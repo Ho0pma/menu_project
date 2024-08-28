@@ -38,6 +38,7 @@ docker run -d \
 
 При втором варианте использования необходимо создать через меню самостоятельно через админку.
 Код написан под следующие меню и элементы:
+
         main_menu = Menu.objects.create(name='main_menu')
         one = MenuItem.objects.create(menu=main_menu, name='one', named_url='menu:one')
         two = MenuItem.objects.create(menu=main_menu, name='two', parent=one, named_url='menu:two')
